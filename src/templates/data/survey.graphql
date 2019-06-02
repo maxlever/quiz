@@ -1,0 +1,17 @@
+query {
+  questions: getQuestionList {
+    questions: items {
+      text
+      position
+      id: _id
+      choices {
+        id: _id
+        text
+        position
+      }
+      correctChoice {
+        id: _id
+      }
+    }
+  }
+}

@@ -1,40 +1,40 @@
 import React, { Component } from 'react';
 import './App.css';
-import { SurveyData } from './types';
+import { SurveyData, SiteSettings } from './types';
 import LoadingCircle from './loading';
 import Survey from './survey';
 
 
 type State = {
   survey: SurveyData
+  settings: SiteSettings
 }
 
 type Props = {}
 
 class App extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      survey: {
-        questions: {},
-      }
-    }
+  state = {
+    survey: {
+      questions: [],
+    },
+    settings: { siteTitle: 'Survey' },
   }
 
   componentDidMount() {
-    this.loadSurveyData().then(survey => this.setState({ survey }));
+    this.loadSurveyData('data/survey.json').then(survey => this.setState({ survey }));
+    this.loadSurveyData('data/site.json').then(settings => this.setState({ settings }))
   }
 
-  private loadSurveyData() {
-    return fetch('data/home.json').then(res => res.json());
+  private loadSurveyData(url: string) {
+    return fetch(url).then(res => res.json());
   }
 
   render() {
-    let { survey } = this.state;
+    let { survey, settings } = this.state;
     return (
       <div className="App">
         <header className="App-header">
-          <p>Survey</p>
+          <p>{settings.siteTitle}</p>
           {Object.entries(survey.questions).length > 0
             ? <Survey {...survey} />
             : <LoadingCircle />}

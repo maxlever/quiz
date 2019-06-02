@@ -1,0 +1,53 @@
+.button {
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 100px;
+  height: auto;
+  border: 1px solid var(--secondary);
+  text-align: center;
+  background: var(--secondary);
+  margin: 10px;
+  cursor: pointer;
+  transition: all .25s ease-in-out;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  color: var(--bg);
+  font-weight: bold;
+  box-sizing: content-box;
+  position: relative;
+}
+
+.button:after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  top: 5px;
+  left: 5px;
+  z-index: 2;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  position: absolute;
+  transition: border-color .25s ease-in-out;
+  box-sizing: border-box;
+}
+.button:hover {
+  background-color: var(--accent2);
+  border-color: var(--accent2);
+}
+.button:active:after {
+  /* border-width: 5px; */
+}
+
+.button:focus {
+  outline: none;
+  background-color: var(--accent3);
+  border-color: var(--accent3);
+}
+
+.button:hover:after {
+  top: 5px;
+  left: 5px;
+  border-color: var(--accent2);
+}

@@ -1,7 +1,7 @@
-import { SurveyAnswer, SurveyQuestions } from '../types';
+import { SurveyQuestions, SurveyAnswers } from '../types';
 
-export function scoreSurvey(answers: SurveyAnswer[], questions: SurveyQuestions) {
-  return answers.filter(answer => {
-    return answer.choiceID === (questions[answer.questionID].answers.correct);
-  }).length;
+export function scoreSurvey(answers: SurveyAnswers, questions: SurveyQuestions) {
+  return questions.filter(question => 
+    question.correctChoice.id === answers[question.id]
+  ).length;
 }

@@ -7,16 +7,27 @@
     "@types/node": "12.0.4",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
+    "@types/react-router": "^5.0.1",
+    "@types/react-router-dom": "^4.3.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-refetch": "^2.0.3",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
+    "takeshape-cli": "^4.85.0",
     "typescript": "3.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "tsg:init": "tsg init",
+    "tsg:build": "tsg build -c",
+    "tsg:deploy": "tsg deploy",
+    "tsg:watch:tsg": "tsg watch -W -c",
+    "tsg:watch": "npm-run-all --serial tsg:build && npm run tsg:watch:*"
   },
   "eslintConfig": {
     "extends": "react-app"

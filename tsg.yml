@@ -1,0 +1,18 @@
+templatePath: src/templates
+staticPath: static
+buildPath: public
+
+context:
+  assets: ../../static/manifest.json
+  site: data/site.graphql
+
+routes:
+  # Static Api Endpoints
+  homepageJson:
+    path: data/survey.json
+    template: static-api/survey.json
+    context: data/survey.graphql
+  siteJson:
+    path: data/site.json
+    template: static-api/site.json
+    context: data/site.graphql

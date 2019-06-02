@@ -1,32 +1,34 @@
-import React, { Component } from 'react';
-import { SurveyData, SurveyAnswer } from '../types';
+import React, { Component, Fragment } from 'react';
+import { SurveyData, SurveyAnswers } from '../types';
 import Question from '../question';
 import End from '../end';
 import { scoreSurvey } from './score';
+import Button from '../button';
 
 
 type State = {
   questionIdx: number,
-  answers: Array<SurveyAnswer>
+  answers: SurveyAnswers
 }
 
-class Survey extends Component<SurveyData, State> {
-  constructor(props: SurveyData) {
-    super(props);
-    this.state = {
-      questionIdx: 0,
-      answers: [],
-    }
+interface Props extends SurveyData {}
+
+class Survey extends Component<Props, State> {
+  state = {
+    questionIdx: 0,
+    answers: {},
   }
 
   next = (choiceID: string) => {
-    this.setState((state, props) => ({
+    this.setState((state, props) => {
+      let newState: State = {
         questionIdx: state.questionIdx + 1, 
-        answers: state.answers.concat([{
-          choiceID,
-          questionID: this.getQuestions(props)[state.questionIdx].id
-        }]),
-      }));
+        answers: {
+          ...state.answers, [this.getQuestions(props)[state.questionIdx].id]: choiceID
+        }
+      };
+      return newState;
+      });
   }
 
   getScore = () => {
@@ -35,24 +37,30 @@ class Survey extends Component<SurveyData, State> {
     return scoreSurvey(answers, questions);
   }
 
+  restart = () => {
+    this.setState({ questionIdx: 0, answers: {} });
+  }
+
   render() {
     const { questionIdx: i } = this.state;
     const questions = this.getQuestions(this.props);
 
     return (
-      <div className="App">
+      <div className="survey">
         {i < questions.length
           ? <Question {...questions[i]} next={this.next} />
-          : <End score={this.getScore()} max={questions.length} />
+          : <Fragment>
+              <End score={this.getScore()} max={questions.length} />
+              <Button onClick={this.restart}>restart?</Button>
+            </Fragment>
         }
-        
       </div>
     );
   }
 
-  private getQuestions(props: SurveyData) {
+  private getQuestions(props: Props) {
     const { questions } = props;
-    return Object.values(questions).sort((a, b) => a.position - b.position);
+    return Array.from(questions).sort((a, b) => a.position - b.position);
   }
 }
 

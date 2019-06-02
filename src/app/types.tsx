@@ -2,16 +2,14 @@ export type SurveyData = {
   questions: SurveyQuestions
 }
 
-export type SurveyQuestions = { [k: string]: SurveyQuestion }
+export type SurveyQuestions = Array<SurveyQuestion>
 
 export type SurveyQuestion = {
   id: string,
   position: number,
   text: string,
-  answers: {
-    choices: Array<SurveyChoice>,
-    correct: string
-  }
+  choices: Array<SurveyChoice>,
+  correctChoice: { id: string }
 }
 
 export type SurveyChoice = {
@@ -20,7 +18,13 @@ export type SurveyChoice = {
   position: number,
 }
 
+export type SurveyAnswers = { [questionID: string]: string }
+
 export type SurveyAnswer = {
   questionID: string,
   choiceID: string,
+}
+
+export type SiteSettings = {
+  siteTitle: string
 }

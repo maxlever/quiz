@@ -7,8 +7,11 @@ type Props = {
 
 export default class End extends Component<Props> {
   render() {
+    const { score, max } = this.props;
     return (<div className="end">
-      you answered {this.props.score} out of {this.props.max} questions correctly.
+      <h3>
+        You answered {score} out of {max} questions correctly.
+      </h3>
     </div>);
   }
 }
