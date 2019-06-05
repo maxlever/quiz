@@ -1,5 +1,5 @@
 templatePath: src/templates
-staticPath: static
+staticPath: build
 buildPath: public
 
 context:

@@ -30,4 +30,3 @@ should i index questions by their id or should i have them in a list? and then h
 one code smell is passing down props for next handler. in another version, more scaled version, i might use a state mgmt system like redux to avoid this.
 
 since my audience is non-technical, i am using a CMS so anyone can add questions
-
