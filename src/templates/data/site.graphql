@@ -1,5 +1,14 @@
 query {
   settings: getSiteSettings {
     siteTitle
+    background {
+      hex
+    }
+    text {
+      hex
+    }
+    accent {
+      hex
+    }
   }
 }

@@ -17,7 +17,12 @@ class App extends Component<Props, State> {
     survey: {
       questions: [],
     },
-    settings: { siteTitle: 'Survey' },
+    settings: {
+      siteTitle: 'Quiz',
+      background: { hex: '#000000' },
+      text: { hex: '#ffffff' },
+      accent: { hex: '#999999' },
+    },
   }
 
   componentDidMount() {
@@ -29,12 +34,18 @@ class App extends Component<Props, State> {
     return fetch(url).then(res => res.json());
   }
 
+  componentDidUpdate() {
+    document.documentElement.style.setProperty('--primary', this.state.settings.background.hex);
+    document.documentElement.style.setProperty('--secondary', this.state.settings.accent.hex);
+    document.documentElement.style.setProperty('--text', this.state.settings.text.hex);
+  }
+
   render() {
     let { survey, settings } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>{settings.siteTitle}</p>
+      <div className="app">
+        <header className="app-header">
+          <h5 className="app-title">{settings.siteTitle}</h5>
           {Object.entries(survey.questions).length > 0
             ? <Survey {...survey} />
             : <LoadingCircle />}

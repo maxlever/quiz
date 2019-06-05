@@ -3,15 +3,22 @@ import { SurveyChoice } from '../types';
 import Button from '../button';
 
 interface Props extends SurveyChoice {
-  next: (choiceID: string) => void
+  next: (choiceID: string) => void,
+  isCorrect: boolean,
+  isSelected: boolean,
 }
 
 export default class Choice extends Component<Props> {
   render() {
-    const { text, next, id } = this.props;
-
-    return <div className="choice">
-            <Button onClick={() => next(id)}>{text}</Button>
-          </div>;
+    const { text, next, id, isCorrect, isSelected } = this.props;
+    const classes = isCorrect ? "correct" : isSelected ? "selected" : "";
+    return (<div className="choice">
+              <Button 
+                onClick={() => next(id)}
+                classes={classes}
+              >
+                {text}
+              </Button>
+            </div>);
   }
 }

@@ -51,5 +51,5 @@
   stroke-linecap: round;
   stroke-miterlimit: 20;
   stroke-width: 4;
-  stroke: rgb(63, 81, 181);
+  stroke: var(--text);
 }

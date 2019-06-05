@@ -1,0 +1,5 @@
+.question__title {
+  font-family: var(--subheading);
+  font-weight: 400;
+  max-width: 620px;
+}

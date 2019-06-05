@@ -1,44 +1,39 @@
 :root {
-  --bg: #282c34;
-  --accent: #61dafb;
-  --primary: #361134;
-  /* #7A918D; */
-  --secondary: #B0228C;
-  /* #99C2A2;*/
-  --tertiary: #EA3788;
-  /* #93B1A7; */
-  --dark-text: #282c34;
-  --light-text: #dddddd;
-  --accent2: #E56B70;
-  /* #DBFEB8; */
-  --accent3: #F391A0;
-  /* #C5EDAC; */
+
+  --primary: rgb(0, 0, 0);
+  --secondary: rgb(126, 126, 126);
+  
+  --text: rgb(255, 255, 255);
+  --accent: rgb(34,115,174);
+
+  --body: Graphik, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --heading: MaisonNeueExtended, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --subheading: MaisonNeue, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-header {
+.app {
+  text-align: left;
   background-color: var(--primary);
+
+}
+
+.app-header {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: var(--light-text);
+  color: var(--text);
+  padding-left: 17vw;
 }
 
-.App-link {
+.app-title {
+  margin-bottom: 0;
+  font-family: var(--heading);
+  font-weight: 900;
+}
+
+.app-link {
   color: var(--accent);
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

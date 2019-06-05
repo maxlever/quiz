@@ -4,11 +4,12 @@ import Question from '../question';
 import End from '../end';
 import { scoreSurvey } from './score';
 import Button from '../button';
-
+import './index.css';
 
 type State = {
   questionIdx: number,
   answers: SurveyAnswers
+  areAnswersShown: boolean
 }
 
 interface Props extends SurveyData {}
@@ -17,18 +18,29 @@ class Survey extends Component<Props, State> {
   state = {
     questionIdx: 0,
     answers: {},
+    areAnswersShown: false
   }
 
   next = (choiceID: string) => {
     this.setState((state, props) => {
       let newState: State = {
-        questionIdx: state.questionIdx + 1, 
-        answers: {
-          ...state.answers, [this.getQuestions(props)[state.questionIdx].id]: choiceID
-        }
+        ...state,
+        areAnswersShown: true,
       };
+      const question = this.getQuestions(props)[state.questionIdx];
+      if (question !== undefined) {
+        newState.answers[question.id] = choiceID;
+      }
       return newState;
-      });
+    });
+    //FIXME: async pb
+    setTimeout(() => {
+      this.setState((state) => ({
+          ...state,
+          questionIdx: state.questionIdx + 1,
+          areAnswersShown: false,
+        }));
+    }, 2000);
   }
 
   getScore = () => {
@@ -46,7 +58,7 @@ class Survey extends Component<Props, State> {
     const questions = this.getQuestions(this.props);
 
     return (
-      <div className="survey">
+      <div className={"survey" + (this.state.areAnswersShown ? " show-answer" : "")}>
         {i < questions.length
           ? <Question {...questions[i]} next={this.next} />
           : <Fragment>

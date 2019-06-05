@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 import './index.css';
 
 type Props = {
-  onClick: () => void
+  onClick: () => void,
+  classes?: string
 }
 export default class Button extends Component<Props> {
+  public static defaultProps = {
+    classes: ""
+  }
   render() {
-    return (<button onClick={this.props.onClick} className="button">
-        {this.props.children}
-      </button>);
+    const { onClick, classes, children } = this.props;
+    return (
+      <button onClick={onClick} className={"button " + classes}>
+        {children}  
+      </button>
+    );
   }
 }

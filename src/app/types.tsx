@@ -1,3 +1,5 @@
+import { Color } from 'csstype';
+
 export type SurveyData = {
   questions: SurveyQuestions
 }
@@ -26,5 +28,8 @@ export type SurveyAnswer = {
 }
 
 export type SiteSettings = {
-  siteTitle: string
+  siteTitle: string,
+  background: { hex: Color },
+  text: { hex: Color },
+  accent: { hex: Color },
 }

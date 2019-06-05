@@ -1,53 +1,53 @@
 .button {
   border-radius: 5px;
-  padding: 5px 10px;
-  width: 100px;
+  padding: 6px 11px;
+  width: auto;
+  border: none;
+  max-width: 250px;
   height: auto;
-  border: 1px solid var(--secondary);
-  text-align: center;
+  text-align: left;
   background: var(--secondary);
-  margin: 10px;
+  margin-bottom: 15px;
   cursor: pointer;
   transition: all .25s ease-in-out;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  color: var(--bg);
-  font-weight: bold;
+  font-family: var(--body);
+  color: var(--text);
+  font-weight: normal;
   box-sizing: content-box;
   position: relative;
+  z-index: 1000;
+  font-size: 16px;
 }
 
-.button:after {
-  content: '';
-  height: 100%;
-  width: 100%;
-  top: 5px;
-  left: 5px;
-  z-index: 2;
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  position: absolute;
-  transition: border-color .25s ease-in-out;
-  box-sizing: border-box;
-}
 .button:hover {
-  background-color: var(--accent2);
-  border-color: var(--accent2);
-}
-.button:active:after {
-  /* border-width: 5px; */
+  background-color: var(--text);
+  border-color: var(--text);
+  color: var(--secondary);
+  box-shadow: 0.4rem 0.4rem 0 0 var(--secondary);
 }
 
 .button:focus {
   outline: none;
-  background-color: var(--accent3);
-  border-color: var(--accent3);
+  background-color: var(--accent);
 }
 
-.button:hover:after {
-  top: 5px;
-  left: 5px;
-  border-color: var(--accent2);
+.button:after {
+  position: absolute;
+  right: -35px;
+  font-size: 25px;
+  font-weight: bold; 
+  top: -2px;
+}
+
+.show-answer .button.correct:after,
+.show-answer .button.correct.selected:after {
+    content: '✓';
+    box-shadow: none;
+}
+
+.show-answer .button.selected:after {
+    content: '×';
+    top: -2px;
+    right: -33px;
+    box-shadow: none;
 }
