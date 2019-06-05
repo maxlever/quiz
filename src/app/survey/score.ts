@@ -1,4 +1,4 @@
-import { SurveyQuestions, SurveyAnswers } from '../types';
+import { SurveyQuestions, SurveyAnswers } from '../util/types';
 
 export function scoreSurvey(answers: SurveyAnswers, questions: SurveyQuestions) {
   return questions.filter(question => 

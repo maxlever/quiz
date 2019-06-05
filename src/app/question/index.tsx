@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { SurveyQuestion, SurveyChoice } from '../types';
+import { SurveyQuestion, SurveyChoice } from '../util/types';
 import Choice from '../choice';
 import './index.css';
 
 interface Props extends SurveyQuestion {
-  next: (choiceID: string) => void
+  next: (choiceID: string) => void,
+  selectedChoice: string,
 }
 export default class Question extends Component<Props> {
-  state = {
-    selectedChoice: null
-  }
-  
   render() {
     const { text, choices, next, correctChoice } = this.props;
     const sortedChoices = this.getSortedChoices(choices);
@@ -20,9 +17,9 @@ export default class Question extends Component<Props> {
         <Choice 
           key={idx}
           {...choice} 
-          next={id => { this.setState({ selectedChoice: id }); next(id); }}
+          next={next}
           isCorrect={correctChoice.id === choice.id}
-          isSelected={this.state.selectedChoice === choice.id}
+          isSelected={this.props.selectedChoice === choice.id}
           />
       )}
     </div>

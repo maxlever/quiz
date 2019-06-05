@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SurveyChoice } from '../types';
+import { SurveyChoice } from '../util/types';
 import Button from '../button';
 
 interface Props extends SurveyChoice {

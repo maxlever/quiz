@@ -1,49 +1,7 @@
 @font-face {
-  font-family: 'PT Serif';
-  src: url(https://qz.com/public/fonts/PT_Serif/PT_Serif-Web-Regular.woff2)
-    format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PTSerif';
-  src: url(https://qz.com/public/fonts/PT_Serif/PT_Serif-Web-Bold.woff2) format('woff2'),
-    url(https://qz.com/public/fonts/PT_Serif/PT_Serif-Web-Bold.woff) format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PTSerif';
-  src: url(https://qz.com/public/fonts/PT_Serif/PT_Serif-Web-Italic.woff2) format('woff2'),
-    url(https://qz.com/public/fonts/PT_Serif/PT_Serif-Web-Italic.woff) format('woff');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PTSerif';
-  src: url(https://qz.com/public/fonts/PT_Serif/PT_Serif-Web-BoldItalic.woff2) format('woff2'),
-    url(https://qz.com/public/fonts/PT_Serif/PT_Serif-Web-BoldItalic.woff) format('woff');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
   font-family: MaisonNeue;
   src: url(https://qz.com/public/fonts/MaisonNeue/MaisonNeue-Medium.woff2) format('woff2');
   font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: MaisonNeueExtended;
-  src: url(https://qz.com/public/fonts/MaisonNeue/MaisonNeueExtended-Bold.woff2)
-    format('woff2');
-  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -54,6 +12,16 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: MaisonNeueExtended;
+  src: url(https://qz.com/public/fonts/MaisonNeue/MaisonNeueExtended-Bold.woff2)
+    format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: MaisonNeueExtended;
   src: url(https://qz.com/public/fonts/MaisonNeue/MaisonNeueExtended-Black.woff2)
@@ -61,45 +29,6 @@
     url(https://qz.com/public/fonts/MaisonNeue/MaisonNeueExtended-Black.woff) format('woff');
   font-weight: 900;
   font-style: normal;
-}
-@font-face {
-  font-family: Publico Headline;
-  src: url(https://qz.com/public/fonts/PublicoHeadline/PublicoHeadline-Bold-Web.woff2)
-      format('woff2'),
-    url(https://qz.com/public/fonts/PublicoHeadline/PublicoHeadline-Bold-Web.woff)
-      format('woff');
-  font-weight: 800;
-  font-style: normal;
-}
-@font-face {
-  font-family: TitlingGothicNormal;
-  src: url(https://qz.com/public/fonts/TitlingGothic/Titling-Gothic-Normal-Medium.woff2)
-      format('woff2'),
-    url(https://qz.com/public/fonts/TitlingGothic/Titling-Gothic-Normal-Medium.woff)
-      format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: TitlingGothicSkyline;
-  src: url(https://qz.com/public/fonts/TitlingGothic/Titling-Gothic-Skyline-Bold.woff2)
-      format('woff2'),
-    url(https://qz.com/public/fonts/TitlingGothic/Titling-Gothic-Skyline-Bold.woff)
-      format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: TitlingGothicWide;
-  src: url(https://qz.com/public/fonts/TitlingGothic/Titling-Gothic-Wide-Medium.woff2)
-      format('woff2'),
-    url(https://qz.com/public/fonts/TitlingGothic/Titling-Gothic-Wide-Medium.woff)
-      format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
 }
 @font-face {
   font-family: Graphik;

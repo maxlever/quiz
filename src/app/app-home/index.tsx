@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-import { SurveyData, SiteSettings } from './types';
-import LoadingCircle from './loading';
-import Survey from './survey';
+import './index.css';
+import { SurveyData, SiteSettings } from '../util/types';
+import LoadingCircle from '../loading';
+import Survey from '../survey';
 
 
 type State = {

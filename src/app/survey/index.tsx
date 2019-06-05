@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { SurveyData, SurveyAnswers } from '../types';
+import { SurveyData, SurveyAnswers } from '../util/types';
 import Question from '../question';
 import End from '../end';
 import { scoreSurvey } from './score';
@@ -15,13 +15,19 @@ type State = {
 interface Props extends SurveyData {}
 
 class Survey extends Component<Props, State> {
-  state = {
+  state: State = {
     questionIdx: 0,
     answers: {},
     areAnswersShown: false
   }
 
+  timeout = -1;
+
   next = (choiceID: string) => {
+    if (this.timeout !== -1) {
+      return;
+    }
+    
     this.setState((state, props) => {
       let newState: State = {
         ...state,
@@ -33,14 +39,15 @@ class Survey extends Component<Props, State> {
       }
       return newState;
     });
-    //FIXME: async pb
-    setTimeout(() => {
+    this.timeout = window.setTimeout(() => {
       this.setState((state) => ({
           ...state,
           questionIdx: state.questionIdx + 1,
           areAnswersShown: false,
         }));
-    }, 2000);
+
+      this.timeout = -1;
+    }, 1000);
   }
 
   getScore = () => {
@@ -54,13 +61,17 @@ class Survey extends Component<Props, State> {
   }
 
   render() {
-    const { questionIdx: i } = this.state;
+    const { questionIdx: i, answers } = this.state;
     const questions = this.getQuestions(this.props);
 
     return (
       <div className={"survey" + (this.state.areAnswersShown ? " show-answer" : "")}>
         {i < questions.length
-          ? <Question {...questions[i]} next={this.next} />
+          ? <Question 
+              {...questions[i]} 
+              next={this.next}
+              selectedChoice={answers[questions[i].id]}
+            />
           : <Fragment>
               <End score={this.getScore()} max={questions.length} />
               <Button onClick={this.restart}>restart?</Button>
