@@ -12,7 +12,7 @@ export default class Question extends Component<Props> {
     const { text, choices, next, correctChoice } = this.props;
     const sortedChoices = this.getSortedChoices(choices);
     return <div className="question">
-      <h3 className="question__title">{text}</h3>
+      <h3 className="question__text">{text}</h3>
       {sortedChoices.map((choice, idx) => 
         <Choice 
           key={idx}
