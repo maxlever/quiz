@@ -1,6 +1,18 @@
 const request = require('request');
 const query = `
 {
+  settings: getSiteSettings {
+    siteTitle
+    background {
+      hex
+    }
+    text {
+      hex
+    }
+    accent {
+      hex
+    }
+  }
   questions: getQuestionList {
     questions: items {
       text
@@ -34,7 +46,7 @@ exports.handler = function (event, context, callback) {
     if (!err) {
       callback(null, {
         statusCode: 200,
-        body: JSON.stringify(response.body),
+        body: response.body,
       });
     }
   })
