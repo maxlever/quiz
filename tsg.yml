@@ -3,7 +3,6 @@ staticPath: build
 buildPath: public
 
 context:
-  assets: ../../static/manifest.json
   site: data/site.graphql
 
 routes:
