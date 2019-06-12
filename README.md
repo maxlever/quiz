@@ -27,7 +27,7 @@ how I catered to these audiences:
 - user and client: non-technical but proficient with web interfaces.
   - Integrated headless CMS for editing.
   - Streamlined quiz flow.
-  - used some of quartz branding (fonts and colors)
+  - used some of qz branding (fonts and colors)
 - engineers:
   - React, Jest, and webpack for developing.
   - Netlify for automated deployment on git push.
