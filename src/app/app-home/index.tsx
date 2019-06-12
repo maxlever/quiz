@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import './index.css';
-import { SurveyData, SiteSettings } from '../util/types';
-import LoadingCircle from '../loading';
 import Survey from '../survey';
-
+import LoadingCircle from '../loading';
+import { loadData } from '../util';
+import { SurveyData, SiteSettings } from '../util/types';
+import './index.css';
 
 type State = {
   survey: SurveyData
   settings: SiteSettings
-}
+};
 
-type Props = {}
+type Props = {};
 
 class App extends Component<Props, State> {
   state = {
@@ -26,12 +26,8 @@ class App extends Component<Props, State> {
   }
 
   componentDidMount() {
-    this.loadSurveyData('data/survey.json').then(survey => this.setState({ survey }));
-    this.loadSurveyData('data/site.json').then(settings => this.setState({ settings }))
-  }
-
-  private loadSurveyData(url: string) {
-    return fetch(url).then(res => res.json());
+    loadData('data/survey.json').then(survey => this.setState({ survey }));
+    loadData('data/site.json').then(settings => this.setState({ settings }))
   }
 
   componentDidUpdate() {
@@ -41,15 +37,18 @@ class App extends Component<Props, State> {
   }
 
   render() {
-    let { survey, settings } = this.state;
+    const { survey, settings } = this.state;
+    const hasQuestions: boolean = Object.entries(survey.questions).length > 0;
     return (
       <div className="app">
-        <header className="app-header">
-          <h5 className="app-title">{settings.siteTitle}</h5>
-          {Object.entries(survey.questions).length > 0
+        <header className="app__header">
+          <h5 className="app__title">{settings.siteTitle}</h5>
+        </header>
+        <main className="app__main">
+          {hasQuestions
             ? <Survey {...survey} />
             : <LoadingCircle />}
-        </header>
+        </main>
       </div>
     );
   }

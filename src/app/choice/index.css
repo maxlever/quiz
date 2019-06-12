@@ -1,0 +1,11 @@
+
+.show-answer .choice .button.correct:after,
+.show-answer .choice .button.correct.selected:after {
+  content: '✓';
+}
+
+.show-answer .choice .button.selected:after {
+  content: '×';
+  top: -2px;
+  right: -33px;
+}

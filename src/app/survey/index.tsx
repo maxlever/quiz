@@ -1,89 +1,85 @@
 import React, { Component, Fragment } from 'react';
 import { SurveyData, SurveyAnswers } from '../util/types';
+import { sortByPosition } from '../util';
 import Question from '../question';
 import End from '../end';
 import { scoreSurvey } from './score';
-import Button from '../button';
 import './index.css';
 
 type State = {
   questionIdx: number,
   answers: SurveyAnswers
   areAnswersShown: boolean
-}
+};
 
-interface Props extends SurveyData {}
-
-class Survey extends Component<Props, State> {
+class Survey extends Component<SurveyData, State> {
   state: State = {
     questionIdx: 0,
     answers: {},
     areAnswersShown: false
   }
 
-  timeout = -1;
-
-  next = (choiceID: string) => {
-    if (this.timeout !== -1) {
-      return;
-    }
-    
-    this.setState((state, props) => {
-      let newState: State = {
-        ...state,
-        areAnswersShown: true,
-      };
-      const question = this.getQuestions(props)[state.questionIdx];
-      if (question !== undefined) {
-        newState.answers[question.id] = choiceID;
-      }
-      return newState;
-    });
-    this.timeout = window.setTimeout(() => {
-      this.setState((state) => ({
-          ...state,
-          questionIdx: state.questionIdx + 1,
-          areAnswersShown: false,
-        }));
-
-      this.timeout = -1;
-    }, 1000);
-  }
-
-  getScore = () => {
+  private getScore() {
     const { answers } = this.state;
     const { questions } = this.props;
     return scoreSurvey(answers, questions);
   }
 
-  restart = () => {
+  private showAnswer(choiceID: string) {
+    this.setState(({ answers: currAnswers, questionIdx: i }, { questions }) => {
+      const question = sortByPosition(questions)[i];
+      return {
+        areAnswersShown: true,
+        answers: { ...currAnswers, [question.id]: choiceID },
+      };
+    });
+  }
+
+  private showNextQuestion() {
+    this.setState(state => ({
+      questionIdx: state.questionIdx + 1,
+      areAnswersShown: false,
+    }));
+  }
+
+  private timeout = 0;
+  private onSelectChoice = (choiceID: string) => {
+    // can't change answer after correct is shown
+    if (this.timeout !== 0) return;
+
+    this.showAnswer(choiceID);
+    this.timeout = window.setTimeout(() => {
+      this.showNextQuestion();
+      this.timeout = 0;
+    }, 1000);
+  }
+
+  private restart = () => {
     this.setState({ questionIdx: 0, answers: {} });
   }
 
   render() {
     const { questionIdx: i, answers } = this.state;
-    const questions = this.getQuestions(this.props);
+    const questions = sortByPosition(this.props.questions);
+    const isNotDone = i < questions.length;
+    const classes = "survey" + (this.state.areAnswersShown ? " show-answer" : "");
 
     return (
-      <div className={"survey" + (this.state.areAnswersShown ? " show-answer" : "")}>
-        {i < questions.length
-          ? <Question 
-              {...questions[i]} 
-              next={this.next}
-              selectedChoice={answers[questions[i].id]}
-            />
-          : <Fragment>
-              <End score={this.getScore()} max={questions.length} />
-              <Button onClick={this.restart}>restart?</Button>
-            </Fragment>
+      <div className={classes}>
+        {isNotDone
+          ? <Question
+            {...questions[i]}
+            onSelect={this.onSelectChoice}
+            selectedChoice={answers[questions[i].id]}
+          />
+          : <End
+            score={this.getScore()}
+            max={questions.length}
+            onRestart={this.restart}
+          />
         }
       </div>
     );
-  }
-
-  private getQuestions(props: Props) {
-    const { questions } = props;
-    return Array.from(questions).sort((a, b) => a.position - b.position);
   }
 }
 

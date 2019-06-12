@@ -4,7 +4,8 @@ import './index.css';
 type Props = {
   onClick: () => void,
   classes?: string
-}
+};
+
 export default class Button extends Component<Props> {
   public static defaultProps = {
     classes: ""

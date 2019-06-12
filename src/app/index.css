@@ -5,6 +5,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: MaisonNeue;
   src: url(https://qz.com/public/fonts/MaisonNeue/MaisonNeue-ExtraBold.woff2) format('woff2');
@@ -15,8 +16,7 @@
 
 @font-face {
   font-family: MaisonNeueExtended;
-  src: url(https://qz.com/public/fonts/MaisonNeue/MaisonNeueExtended-Bold.woff2)
-    format('woff2');
+  src: url(https://qz.com/public/fonts/MaisonNeue/MaisonNeueExtended-Bold.woff2) format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -24,16 +24,16 @@
 
 @font-face {
   font-family: MaisonNeueExtended;
-  src: url(https://qz.com/public/fonts/MaisonNeue/MaisonNeueExtended-Black.woff2)
-      format('woff2'),
-    url(https://qz.com/public/fonts/MaisonNeue/MaisonNeueExtended-Black.woff) format('woff');
+  src: url(https://qz.com/public/fonts/MaisonNeue/MaisonNeueExtended-Black.woff2) format('woff2'),
+       url(https://qz.com/public/fonts/MaisonNeue/MaisonNeueExtended-Black.woff) format('woff');
   font-weight: 900;
   font-style: normal;
 }
+
 @font-face {
   font-family: Graphik;
   src: url(https://qz.com/public/fonts/Graphik/Graphik-Regular-Web.woff2) format('woff2'),
-    url(https://qz.com/public/fonts/Graphik/Graphik-Regular-Web.woff) format('woff');
+       url(https://qz.com/public/fonts/Graphik/Graphik-Regular-Web.woff) format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -42,7 +42,7 @@
 @font-face {
   font-family: Graphik;
   src: url(https://qz.com/public/fonts/Graphik/Graphik-Bold-Web.woff2) format('woff2'),
-    url(https://qz.com/public/fonts/Graphik/Graphik-Bold-Web.woff) format('woff');
+       url(https://qz.com/public/fonts/Graphik/Graphik-Bold-Web.woff) format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -51,7 +51,7 @@
 @font-face {
   font-family: Graphik;
   src: url(https://qz.com/public/fonts/Graphik/Graphik-Super-Web.woff2) format('woff2'),
-    url(https://qz.com/public/fonts/Graphik/Graphik-Super-Web.woff) format('woff');
+       url(https://qz.com/public/fonts/Graphik/Graphik-Super-Web.woff) format('woff');
   font-weight: 900;
   font-style: normal;
   font-display: swap;

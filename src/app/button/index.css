@@ -1,10 +1,8 @@
 .button {
   border-radius: 5px;
   padding: 6px 11px;
-  width: auto;
   border: none;
   max-width: 250px;
-  height: auto;
   text-align: left;
   background: var(--secondary);
   margin-bottom: 15px;
@@ -28,8 +26,6 @@
 
 .button:focus {
   outline: none;
-  /* color: var(--text);
-  background-color: var(--secondary); */
 }
 
 .button:after {
@@ -38,17 +34,4 @@
   font-size: 25px;
   font-weight: bold; 
   top: -2px;
-}
-
-.show-answer .button.correct:after,
-.show-answer .button.correct.selected:after {
-    content: '✓';
-    box-shadow: none;
-}
-
-.show-answer .button.selected:after {
-    content: '×';
-    top: -2px;
-    right: -33px;
-    box-shadow: none;
 }

@@ -1,8 +1,6 @@
 :root {
-
   --primary: rgb(0, 0, 0);
   --secondary: rgb(126, 126, 126);
-  
   --text: rgb(255, 255, 255);
   --accent: rgb(34,115,174);
 
@@ -14,10 +12,6 @@
 .app {
   text-align: left;
   background-color: var(--primary);
-
-}
-
-.app-header {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,12 +22,8 @@
   padding-left: 17vw;
 }
 
-.app-title {
+.app__title {
   margin-bottom: 0;
   font-family: var(--heading);
   font-weight: 900;
-}
-
-.app-link {
-  color: var(--accent);
 }
