@@ -31,3 +31,36 @@ how I catered to these audiences:
 - engineers:
   - React, Jest, and webpack for developing.
   - Netlify for automated deployment on git push.
+
+## directory structure
+
+```bash
+├── config # dev & build config
+├── functions # netlify serverless functions
+│   └── query.js
+├── package.json
+├── scripts # dev scripts
+├── src
+│   ├── app # react components
+│   │   ├── app-home
+│   │   ├── button
+│   │   ├── choice
+│   │   ├── end
+│   │   ├── index.css
+│   │   ├── loading
+│   │   ├── question
+│   │   ├── serviceWorker.ts
+│   │   ├── survey
+│   │   └── util
+│   ├── index.tsx # app entry point
+│   ├── react-app-env.d.ts
+│   └── templates # CMS-generated static JSON
+│       ├── data
+│       └── static-api
+├── static # assets
+│   ├── favicon.ico
+│   ├── index.html # HTML entry point
+│   └── manifest.json
+├── tsconfig.json # typescript config
+├── tsg.yml # CMS config
+```
