@@ -74,7 +74,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "predeploy": "rm -rf build && rm -rf public && rm -rf static/data && mkdir -p build",
-    "deploy": "yarn run tsg:build && mv public/data static/data && yarn run build && yarn run tsg:deploy",
+    "deploy": "yarn run tsg:build && mv public/data static/data && yarn run build",
     "tsg:init": "tsg init",
     "tsg:build": "tsg build -c",
     "tsg:deploy": "tsg deploy",
