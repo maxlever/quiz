@@ -579,6 +579,26 @@ module.exports = function(webpackEnv) {
             // public/ and not a SPA route
             new RegExp('/[^/]+\\.[^/]+$'),
           ],
+          runtimeCaching: [{
+            // Match any same-origin request that contains 'api'.
+            urlPattern: /data/,
+            // Apply a network-first strategy.
+            handler: 'NetworkFirst',
+            options: {
+              // Fall back to the cache after 10 seconds.
+              networkTimeoutSeconds: 5,
+              // Use a custom cache name for this route.
+              cacheName: 'static-api-cache',
+              // Configure custom cache expiration.
+              expiration: {
+                maxEntries: 5,
+                maxAgeSeconds: 1000000,
+              },
+              cacheableResponse: {
+                statuses: [200],
+              },
+            },
+          }],
         }),
       // TypeScript type checking
       useTypeScript &&
