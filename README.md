@@ -23,7 +23,7 @@ the system should:
 
 ## tech stack
 
-I built a React app in Typescript, using the create-react-app tool and jest for testing. The quiz is displayed based on pre-generated static JSON files which are produced by getting content from a headless CMS ([Takeshape](https://takeshape.io/)). The site was deployed on [Netlify](https://netlify.com)'s CDN, such that any update to github or the CMS will trigger a new build. This app is serverless, following [JAMstack](https://jamstack.org) architecture.
+I built a React app in Typescript, using the [create-react-app](https://facebook.github.io/create-react-app/docs/adding-typescript) tool and Jest for testing. The quiz is displayed based on pre-generated static JSON files which are produced by getting content from a headless CMS ([Takeshape](https://takeshape.io/)). The site was deployed on [Netlify](https://netlify.com)'s CDN, such that any update to github or the CMS will trigger a new build. This app is serverless, following [JAMstack](https://jamstack.org) architecture.
 
 ## design
 
