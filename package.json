@@ -41,6 +41,7 @@
     "jest-resolve": "24.7.1",
     "jest-watch-typeahead": "0.3.0",
     "mini-css-extract-plugin": "0.5.0",
+    "npm-run-all": "^4.1.5",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.2.1",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -70,16 +71,15 @@
     "workbox-webpack-plugin": "4.2.0"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "predeploy": "rm -rf build && rm -rf public && rm -rf static/data && mkdir -p build",
-    "deploy": "yarn run tsg:build && mv public/data static/data && yarn run build",
+    "dev": "npm-run-all --parallel webpack:start tsg:watch",
+    "deploy": "npm-run-all --serial tsg:build webpack:build",
+    "webpack:start": "node scripts/start.js",
+    "webpack:build": "node scripts/build.js",
     "tsg:init": "tsg init",
-    "tsg:build": "tsg build -c",
-    "tsg:deploy": "tsg deploy",
+    "tsg:build": "mkdir -p build && tsg build -c",
     "tsg:watch:tsg": "tsg watch -W -c",
-    "tsg:watch": "npm-run-all --serial tsg:build && npm run tsg:watch:*"
+    "tsg:watch": "npm-run-all --serial tsg:build && npm run tsg:watch:tsg"
   },
   "eslintConfig": {
     "extends": "react-app"
